@@ -11,7 +11,7 @@ context.onstatechange = function() {
     if (context.state === "suspended") { context.resume(); }
 }
 
-var sound_1 = "sounds/HOA3_rec4.wav";
+var sound_1 = "sounds/paper.wav";
 //var sound_2 = "sounds/paper.wav";
 //var sound_3 = "sounds/attacks.wav";
 var irUrl_0 = "node_modules/web-audio-ambisonic/examples/IRs/HOA4_filters_virtual.wav";
