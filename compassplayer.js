@@ -114,12 +114,12 @@ var assignSoundBufferOnLoad = function(buffer) {
     soundBuffer = buffer;
     document.getElementById('play').disabled = false;
 }
-var assignSoundBufferOnLoad2 = function(buffer) {
-    soundBuffer2 = buffer;
-   }
-var assignSoundBufferOnLoad3 = function(buffer) {
-    soundBuffer3 = buffer;
-   }
+//var assignSoundBufferOnLoad2 = function(buffer) {
+//    soundBuffer2 = buffer;
+//   }
+//var assignSoundBufferOnLoad3 = function(buffer) {
+//    soundBuffer3 = buffer;
+//   }
 
 
 var loader_sound_1 = new webAudioAmbisonic.HOAloader(context, maxOrder, sound_1,assignSoundBufferOnLoad);
@@ -154,7 +154,7 @@ $(document).ready(function() {
         sound.connect(limiter.in);
         sound.start(0);
         
-        sound2 = context.createBufferSource();
+       /*  sound2 = context.createBufferSource();
         sound2.buffer = soundBuffer2;
         sound2.loop = true;
         sound2.connect(limiter2.in);
@@ -166,14 +166,14 @@ $(document).ready(function() {
         sound3.loop = true;
         sound3.connect(limiter3.in);
         sound3.start(0);
-        sound3.isPlaying = true;
+        sound3.isPlaying = true; */
         
         document.getElementById('play').disabled = true;
         document.getElementById('stop').disabled = false;
     });
     document.getElementById('stop').addEventListener('click', function() {
         sound.stop(0);
-        sound2.stop(0);
+        //sound2.stop(0);
         sound3.stop(0)
         sound.isPlaying = false;
         document.getElementById('play').disabled = false;
