@@ -13,7 +13,7 @@ context.onstatechange = function() {
 
 var sound_1 = "sounds/clicks.wav";
 var sound_2 = "sounds/paper.wav";
-var sound_3 = "sounds/move.wav";
+var sound_3 = "sounds/attacks.wav";
 var irUrl_0 = "node_modules/web-audio-ambisonic/examples/IRs/HOA4_filters_virtual.wav";
 var irUrl_1 = "node_modules/web-audio-ambisonic/examples/IRs/HOA4_filters_direct.wav";
 var irUrl_2 = "node_modules/web-audio-ambisonic/examples/IRs/room-medium-1-furnished-src-20-Set1.wav";
