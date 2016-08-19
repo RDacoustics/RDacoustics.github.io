@@ -110,19 +110,15 @@ gain3.gain.value = gain3Slider.value;
 
 
 <button onclick="getLocation()">Try It</button>
-
-<p id="demo"></p>
-
 <script>
-
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
 }
 
 function showPosition(position) {
-    document.getElementById("lat").innerHTML =position.coords.latitude;
-	document.getElementById("long").innerHTML =position.coords.longitude;
+var lat =    document.getElementById("lat").innerHTML =position.coords.latitude;
+var long = 	document.getElementById("long").innerHTML =position.coords.longitude;
 }
 </script>
 
