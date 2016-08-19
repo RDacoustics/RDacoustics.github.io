@@ -95,7 +95,7 @@ gain3.gain.value = gain3Slider.value;
 <script src="./compassplayer.js"></script>
 
 
-<button onclick="getLocation()">Try It</button>
+<button onclick="getLocation()">Get GPS coordinates</button>
 
 <p id="demo"></p>
 
@@ -116,7 +116,10 @@ function showPosition(position) {
 }
 </script>
 
-
+<div id="container">
+    <img class='img' src="Picture1" alt="" />
+    <canvas id="gameCanvas" width="320" height="480"></canvas>
+</div>
 
 </body>
 </html>
