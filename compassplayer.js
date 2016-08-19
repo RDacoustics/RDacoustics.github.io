@@ -12,11 +12,11 @@ context.onstatechange = function() {
 }
 
 var sound_1 = "sounds/clicks.wav";
-var sound_2 = "sounds/paper.wav";
-var sound_3 = "sounds/attacks.wav";
+//var sound_2 = "sounds/paper.wav";
+//var sound_3 = "sounds/attacks.wav";
 var irUrl_0 = "node_modules/web-audio-ambisonic/examples/IRs/HOA4_filters_virtual.wav";
 var irUrl_1 = "node_modules/web-audio-ambisonic/examples/IRs/HOA4_filters_direct.wav";
-var irUrl_2 = "node_modules/web-audio-ambisonic/examples/IRs/room-medium-1-furnished-src-20-Set1.wav";
+//var irUrl_2 = "node_modules/web-audio-ambisonic/examples/IRs/room-medium-1-furnished-src-20-Set1.wav";
 
 var maxOrder = 3;
 var orderOut = 3;
@@ -124,10 +124,10 @@ var assignSoundBufferOnLoad3 = function(buffer) {
 
 var loader_sound_1 = new webAudioAmbisonic.HOAloader(context, maxOrder, sound_1,assignSoundBufferOnLoad);
 loader_sound_1.load();
-var loader_sound_2 = new webAudioAmbisonic.HOAloader(context, maxOrder, sound_2, assignSoundBufferOnLoad2);
-loader_sound_2.load();
-var loader_sound_3 = new webAudioAmbisonic.HOAloader(context, maxOrder, sound_3, assignSoundBufferOnLoad3);
-loader_sound_3.load();
+//var loader_sound_2 = new webAudioAmbisonic.HOAloader(context, maxOrder, sound_2, assignSoundBufferOnLoad2);
+//loader_sound_2.load();
+//var loader_sound_3 = new webAudioAmbisonic.HOAloader(context, maxOrder, sound_3, assignSoundBufferOnLoad3);
+//loader_sound_3.load();
 
 // load filters and assign to buffers
 var assignFiltersOnLoad = function(buffer) {
