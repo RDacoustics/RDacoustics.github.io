@@ -63,11 +63,12 @@
 			</tr>
 		</table>
 	
-	getLocation()
-	var x = document.getElementById("demo");
-	function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+ <p id="gps1"></p> 
+  getLocation()
+var x = document.getElementById("gps1");
+function getLocation() {
+ if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(showPosition);
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
