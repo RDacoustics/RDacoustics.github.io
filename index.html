@@ -62,8 +62,16 @@
 				<td id="beta"></td>
 			</tr>
 		</table>
-	
- 
+
+<button onclick="getLocation()">Get GPS coordinates</button>
+
+<p id="demo"></p>
+
+
+<div id="container">
+    <img class='img' src="Picture1.png" alt="" />
+    <canvas id="gameCanvas" width="964" height="732"></canvas>
+</div>
 
 <script>
 
@@ -90,18 +98,7 @@ gain3Slider.addEventListener('input', function(input) {
 gain3.gain.value = gain3Slider.value;
 });
 
-</script>
-
-<script src="./compassplayer.js"></script>
-
-
-<button onclick="getLocation()">Get GPS coordinates</button>
-
-<p id="demo"></p>
-
-<script>
 var x = document.getElementById("demo");
-
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -109,17 +106,14 @@ function getLocation() {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
-
 function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
 }
+
 </script>
 
-<div id="container">
-    <img class='img' src="Picture1.png" alt="" />
-    <canvas id="gameCanvas" width="964" height="732"></canvas>
-</div>
+<script src="./compassplayer.js"></script>
 
 </body>
 </html>
