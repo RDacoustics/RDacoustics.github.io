@@ -13,7 +13,7 @@ context.onstatechange = function() {
 
 var sound_1 = "sounds/paper.wav";
 var sound_2 = "sounds/clicks.wav";
-//var sound_3 = "sounds/attacks.wav";
+var sound_3 = "sounds/attacks.wav";
 var irUrl_0 = "node_modules/web-audio-ambisonic/examples/IRs/HOA4_filters_virtual.wav";
 var irUrl_1 = "node_modules/web-audio-ambisonic/examples/IRs/HOA4_filters_direct.wav";
 //var irUrl_2 = "node_modules/web-audio-ambisonic/examples/IRs/room-medium-1-furnished-src-20-Set1.wav";
@@ -117,17 +117,17 @@ var assignSoundBufferOnLoad = function(buffer) {
 var assignSoundBufferOnLoad2 = function(buffer) {
     soundBuffer2 = buffer;
  }
-//var assignSoundBufferOnLoad3 = function(buffer) {
-//    soundBuffer3 = buffer;
-//   }
+var assignSoundBufferOnLoad3 = function(buffer) {
+    soundBuffer3 = buffer;
+   }
 
 
 var loader_sound_1 = new webAudioAmbisonic.HOAloader(context, maxOrder, sound_1,assignSoundBufferOnLoad);
 loader_sound_1.load();
 var loader_sound_2 = new webAudioAmbisonic.HOAloader(context, maxOrder, sound_2, assignSoundBufferOnLoad2);
 loader_sound_2.load();
-//var loader_sound_3 = new webAudioAmbisonic.HOAloader(context, maxOrder, sound_3, assignSoundBufferOnLoad3);
-//loader_sound_3.load();
+var loader_sound_3 = new webAudioAmbisonic.HOAloader(context, maxOrder, sound_3, assignSoundBufferOnLoad3);
+loader_sound_3.load();
 
 // load filters and assign to buffers
 var assignFiltersOnLoad = function(buffer) {
@@ -161,12 +161,12 @@ $(document).ready(function() {
         sound2.start(0);
         sound2.isPlaying = true;
         
-       /*  sound3 = context.createBufferSource();
+        sound3 = context.createBufferSource();
         sound3.buffer = soundBuffer3;
         sound3.loop = true;
         sound3.connect(limiter3.in);
         sound3.start(0);
-        sound3.isPlaying = true;  */
+        sound3.isPlaying = true;  
         
         document.getElementById('play').disabled = true;
         document.getElementById('stop').disabled = false;
@@ -174,7 +174,7 @@ $(document).ready(function() {
     document.getElementById('stop').addEventListener('click', function() {
         sound.stop(0);
         sound2.stop(0);
-       // sound3.stop(0);
+       sound3.stop(0);
         sound.isPlaying = false;
         document.getElementById('play').disabled = false;
         document.getElementById('stop').disabled = true;
