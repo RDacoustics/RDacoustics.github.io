@@ -63,8 +63,9 @@
 			</tr>
 		</table>
 	
- <p id="gps1"></p> 
-  getLocation()
+<p id="gps1"></p>
+<script> 
+ getLocation()
 var x = document.getElementById("gps1");
 function getLocation() {
  if (navigator.geolocation) {
@@ -78,6 +79,10 @@ function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
 }
+</script>
+
+
+
 
 <script>
 
