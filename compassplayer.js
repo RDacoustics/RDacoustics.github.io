@@ -221,7 +221,7 @@ $(document).ready(function() {
 	    rotator3.updateRotMtx();		
 	};
 	
-	
+	getLocation()
 	var x = document.getElementById("demo");
 	function getLocation() {
     if (navigator.geolocation) {
