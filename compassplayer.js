@@ -174,7 +174,7 @@ $(document).ready(function() {
     document.getElementById('stop').addEventListener('click', function() {
         sound.stop(0);
         //sound2.stop(0);
-       // sound3.stop(0)
+       // sound3.stop(0);
         sound.isPlaying = false;
         document.getElementById('play').disabled = false;
         document.getElementById('stop').disabled = true;
