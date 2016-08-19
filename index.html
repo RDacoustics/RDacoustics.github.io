@@ -148,11 +148,7 @@ function draw() {
     canvas_context.drawImage(marker.Sprite, marker.XPos, marker.YPos, marker.Width, marker.Height);
     // run example specific draw callback
     if (!(typeof(drawLocal)=='undefined')) { drawLocal(); }
-    // Clear Canvas
-    canvas2_context.fillStyle = "#000";
-    canvas2_context.fillRect(0, 0, canvas.width, canvas.height);
-    // Draw map
-    canvas2_context.drawImage(mapSprite, 0, 0);
+   
 
 };
 draw();
