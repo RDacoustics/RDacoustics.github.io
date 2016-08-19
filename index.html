@@ -63,7 +63,17 @@
 			</tr>
 		</table>
 	
-
+    <h2>Orientation </h2>
+		<table>
+			<tr>
+				<td>latitude :</td>
+				<td>longitude:</td>
+			</tr>
+			<tr>
+				<td id="lat"></td>
+				<td id="long"></td>				
+			</tr>
+		</table>
 
 
 
@@ -104,19 +114,15 @@ gain3.gain.value = gain3Slider.value;
 <p id="demo"></p>
 
 <script>
-var x = document.getElementById("demo");
 
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
 }
 
 function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;
+    document.getElementById("lat").innerHTML =position.coords.latitude;
+	document.getElementById("long").innerHTML =position.coords.longitude;
 }
 </script>
 
