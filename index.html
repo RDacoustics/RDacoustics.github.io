@@ -110,18 +110,10 @@ function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
 }
-
-</script>
-
-<script src="./compassplayer.js"></script>
-
-<script>
-
 ////////////////////////////
 // SET-UP GUI AND USER INPUT
 var canvas = document.getElementById('Canvas');
 var canvas_context = canvas.getContext("2d");
-
 // Map sprite
 var mapSprite = new Image();
 // mapSprite.src = "https://dl.dropboxusercontent.com/u/6300538/WebAmbi/map.png";
@@ -138,10 +130,6 @@ var Marker = function () {
     this.YPos = (document.getElementById('Canvas').height / 2) - this.Width/2;
 }
 var marker = new Marker();
-
-
-var canvas2 = document.getElementById('Canvas2');
-var canvas2_context = canvas2.getContext("2d");
 
  // Move the marker to current location
 // marker.XPos = mouseXPos - (marker.Width/2);
@@ -166,8 +154,15 @@ function draw() {
 
 };
 draw();
+$.holdReady( false ); // to force awaiting on common.html loading
+
+
+
 
 </script>
+
+<script src="./compassplayer.js"></script>
+
 
 
 </body>
