@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<link rel="stylesheet" type="text/css" href="common.css">
+<html>
+<head>
+	<title> Ambisonics with compass </title>
+	<script src="//code.jquery.com/jquery-3.0.0.min.js"></script>
+	<script type="text/javascript" src="node_modules/web-audio-ambisonic/web-audio-ambisonic.umd.js"></script>
+</head>
+<body>
+	<h1> CIRMMT in the wild!</h1> <hr/>
+    
+    <!-- PLAY / STOP -->
+    <p>
+    	Start / Stop audio: &nbsp;
+    	<button id="play" disabled>Play</button>
+    	<button id="stop" disabled>Stop</button>
+    </p>
+    
+    <!-- AMBISONIC ORDER -->
+    <div id='div-order'>
+    	<p>
+    		Set Ambisonic order: <span id="order-value">3</span> &nbsp;
+    		<button id="N1">1st</button>
+    		<button id="N2">2nd</button>
+    		<button id="N3">3rd</button>
+    	</p>
+    </div>
+    
+    <!-- Volume Slider -->
+	<div id='div-volume'>
+		<label for="volume-slider">Volume</label> &nbsp;
+		<input id="volume-slider" type="range" min="0" max="10" value="1" step="0.1" />
+	</div>
+	
+	<div id='div-volume1'>
+		<label for="gain1">Gain 1</label> &nbsp;
+		<input id="gain1-slider" type="range" min="0" max="1" value="1" step="1" />
+	</div>
+	
+	<div id='div-volume2'>
+		<label for="gain2">Gain 2</label> &nbsp;
+		<input id="gain2-slider" type="range" min="0" max="1" value="1" step="1" />
+	</div>
+	
+	<div id='div-volume3'>
+		<label for="gain3">Gain 3</label> &nbsp;
+		<input id="gain3-slider" type="range" min="0" max="1" value="1" step="1" />
+	</div>
+		
+	
+	
+    <h2>Orientation </h2>
+		<table>
+			<tr>
+				<td>rotator.yaw :</td>
+				<td>Azymuth :</td>
+				<td>Elevation :</td>
+			</tr>
+			<tr>
+				<td id="YAW"></td>
+				<td id="alpha"></td>				
+				<td id="beta"></td>
+			</tr>
+		</table>
+
+<script>
+
+//GUI
+var mouseDown = false;
+var orderValue = document.getElementById('order-value');
+var soundChoice = document.getElementById('sound-choice');
+
+// Add mouse click event listener to canvas
+var volumeSlider = document.getElementById('volume-slider');
+volumeSlider.addEventListener('input', function(input) {
+masterGain.gain.value = volumeSlider.value;
+});
+var gain1Slider = document.getElementById('gain1-slider');
+gain1Slider.addEventListener('input', function(input) {
+gain1.gain.value = gain1Slider.value;
+});
+var gain2Slider = document.getElementById('gain2-slider');
+gain2Slider.addEventListener('input', function(input) {
+gain2.gain.value = gain2Slider.value;
+});
+var gain3Slider = document.getElementById('gain3-slider');
+gain3Slider.addEventListener('input', function(input) {
+gain3.gain.value = gain3Slider.value;
+});
+
+</script>
+
+<script src="./compassplayer.js"></script>
+
+</body>
+</html>
