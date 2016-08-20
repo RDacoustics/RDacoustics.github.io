@@ -105,33 +105,6 @@ gain3.gain.value = gain3Slider.value;
 });
 
 
-//geolocalisation
-
-
-
-var x = document.getElementById("center");
-var source1x= [-15, +15];
-var coords = {lat: "", lon: ""};
-
-function setCenterLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(getPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
-function getPosition(position) {
-	coords.lat = position.coords.latitude;
-    coords.lon = position.coords.longitude;
-	centrePosition= [coords.lat, coords.lon] ;
-    document.getElementById("center").innerHTML = centrePosition;
-
-
-navigator.geolocation.watchPosition(function(position) {
-	document.getElementById('currentLat').innerHTML = position.coords.latitude;
-	document.getElementById('currentLon').innerHTML = position.coords.longitude;
-}); 
-
 
 
 	//currentPosition= calcPosition(coord1, coord2)
@@ -179,6 +152,33 @@ function draw() {
 };
 draw();
 $.holdReady( false ); // to force awaiting on common.html loading
+
+//geolocalisation
+
+
+
+var x = document.getElementById("center");
+var source1x= [-15, +15];
+var coords = {lat: "", lon: ""};
+
+function setCenterLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function getPosition(position) {
+	coords.lat = position.coords.latitude;
+    coords.lon = position.coords.longitude;
+	centrePosition= [coords.lat, coords.lon] ;
+    document.getElementById("center").innerHTML = centrePosition;
+
+
+navigator.geolocation.watchPosition(function(position) {
+	document.getElementById('currentLat').innerHTML = position.coords.latitude;
+	document.getElementById('currentLon').innerHTML = position.coords.longitude;
+}); 
 
 
 
