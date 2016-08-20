@@ -100,6 +100,9 @@ gain3Slider.addEventListener('input', function(input) {
 gain3.gain.value = gain3Slider.value;
 });
 
+
+//geolocalisation
+
 var x = document.getElementById("demo");
 function getLocation() {
     if (navigator.geolocation) {
@@ -133,9 +136,15 @@ var Marker = function () {
 }
 var marker = new Marker();
 
+
+
+
  // Move the marker to current location
 // marker.XPos = mouseXPos - (marker.Width/2);
 // marker.YPos = mouseYPos - (marker.Height/2);
+
+
+
 
 function draw() {
     requestAnimationFrame(draw);

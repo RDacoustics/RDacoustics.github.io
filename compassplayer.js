@@ -11,12 +11,12 @@ context.onstatechange = function() {
     if (context.state === "suspended") { context.resume(); }
 }
 
-var sound_1 = "sounds/paper.wav";
-var sound_2 = "sounds/clicks.wav";
+var sound_1 = "sounds/clicks.wav";
+var sound_2 = "sounds/paper.wav";
 var sound_3 = "sounds/attacks.wav";
 var irUrl_0 = "node_modules/web-audio-ambisonic/examples/IRs/HOA4_filters_virtual.wav";
 var irUrl_1 = "node_modules/web-audio-ambisonic/examples/IRs/HOA4_filters_direct.wav";
-//var irUrl_2 = "node_modules/web-audio-ambisonic/examples/IRs/room-medium-1-furnished-src-20-Set1.wav";
+var irUrl_2 = "node_modules/web-audio-ambisonic/examples/IRs/room-medium-1-furnished-src-20-Set1.wav";
 
 var maxOrder = 3;
 var orderOut = 3;
@@ -51,31 +51,6 @@ console.log(rotator3);
 var decoder = new webAudioAmbisonic.binDecoder(context, maxOrder);
 console.log(decoder);
 
-function mixer(audioCtx, source1, source2){
-//works also to connect everything to context.destination
-
-	if (source1.channelCount != source2.channelCount){
-		console.log("The 2 sources have different number of channels");
-		return (0);
-	}
-	
-	nbCh = source1.channelCount;
-	merger = audioCtx.createChannelMerger(nbCh);
-	
-	split1 = audioCtx.createChannelSplitter(nbCh);
-	split2 = audioCtx.createChannelSplitter(nbCh);
-	
-	source1.connect(split1);
-	source2.connect(split2);
-	
-	for (var ch=0 ; ch < nbCh ; ch++ ){
-		split1.connect(merger, ch, ch);
-		split2.connect(merger, ch, ch);		
-	}
-	return merger;	
-}
-
-
 // output gain
 var masterGain = context.createGain();
 var gain1 = context.createGain();
@@ -96,8 +71,6 @@ gain2.connect(decoder.in);
 rotator3.out.connect(gain3);
 gain3.connect(decoder.in);
 
-//mix = mixer(context, gain1, gain2);
-//mix.connect(decoder.in);
 decoder.out.connect(masterGain);
 masterGain.connect(context.destination);
 
@@ -116,7 +89,7 @@ var assignSoundBufferOnLoad = function(buffer) {
 }
 var assignSoundBufferOnLoad2 = function(buffer) {
     soundBuffer2 = buffer;
- }
+   }
 var assignSoundBufferOnLoad3 = function(buffer) {
     soundBuffer3 = buffer;
    }
@@ -166,7 +139,7 @@ $(document).ready(function() {
         sound3.loop = true;
         sound3.connect(limiter3.in);
         sound3.start(0);
-        sound3.isPlaying = true;  
+        sound3.isPlaying = true;
         
         document.getElementById('play').disabled = true;
         document.getElementById('stop').disabled = false;
@@ -174,7 +147,7 @@ $(document).ready(function() {
     document.getElementById('stop').addEventListener('click', function() {
         sound.stop(0);
         sound2.stop(0);
-       sound3.stop(0);
+        sound3.stop(0)
         sound.isPlaying = false;
         document.getElementById('play').disabled = false;
         document.getElementById('stop').disabled = true;
@@ -221,6 +194,43 @@ $(document).ready(function() {
 	    rotator3.updateRotMtx();		
 	};
 	
+// When the user clicks their mouse on our canvas run this code
+function mouseAction(mouse) {
+    // Get current mouse coords
+    var rect = canvas.getBoundingClientRect();
+    var mouseXPos = (mouse.clientX - rect.left);
+    var mouseYPos = (mouse.clientY - rect.top);
 
+    // update html values
+    document.getElementById("azim-value").innerHTML = mouseXPos;
+    document.getElementById("azim-value").innerHTML = mouseXPos;
+}
+
+Number.prototype.toRadians = function() {
+   return this * Math.PI / 180;
+}
+
+function calcDistance(lat1, lat2, lon1, lon2) {
+	var R = 6371e3;
+    var y1 = lat1.toRadians();
+    var y2 = lat2.toRadians();
+    var deltaLat = (lat2-lat1).toRadians();
+    var deltaLon = (lon2-lon1).toRadians();
+
+    var a = Math.sin(deltaLat/2) * Math.sin(deltaLat/2) +
+            Math.cos(y1) * Math.cos(y2) *
+            Math.sin(deltaLon/2) * Math.sin(deltaLon/2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+    return(R * c) ;
+}
+
+function calcXY(coord1, coord2){
+	x = calcDistance(coord1[0], coord1[0], coord1[1], coord2[1]);
+	y = calcDistance(coord1[0], coord2[0], coord1[1], coord1[1]);
 	
-	
+	if (coord1[1]-coord2[1] > 0 ) { x = -x ;}
+	if (coord1[0]-coord2[0] > 0) {y = -y ;}
+	return [x, y];
+}
+
