@@ -64,9 +64,10 @@
 		</table>
 
 <button onclick="setCenterLocation()">Set Canvas Center coordinates</button>
+
 <p id="center"></p>
-<p>center position:<br/>
-<span id="center">???</span> </p>
+
+<p>Center position:<br/> <span id="center">???</span> </p>
 
 
 <div id="container">
@@ -106,13 +107,6 @@ gain3.gain.value = gain3Slider.value;
 
 //geolocalisation
 
-navigator.geolocation.watchPosition(function(position) {
-	document.getElementById('currentLat').innerHTML = position.coords.latitude;
-	document.getElementById('currentLon').innerHTML = position.coords.longitude;
-	
-	
-}); 
-
 
 
 var x = document.getElementById("center");
@@ -132,6 +126,11 @@ function getPosition(position) {
 	centrePosition= [coords.lat, coords.lon] ;
     document.getElementById("center").innerHTML = centrePosition;
 
+
+navigator.geolocation.watchPosition(function(position) {
+	document.getElementById('currentLat').innerHTML = position.coords.latitude;
+	document.getElementById('currentLon').innerHTML = position.coords.longitude;
+}); 
 
 
 
