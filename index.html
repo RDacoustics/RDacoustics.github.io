@@ -110,18 +110,22 @@ gain3.gain.value = gain3Slider.value;
 
 var k = document.getElementById("test");
 var coords = {lat: "", lon: ""};
-
 var options = {timeout:60000};
-pos1 = navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
-coords.lat = pos1.coords.latitude;
-coords.lon = pos1.coords.longitude;
+
+navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+function showLocation(position) {
+	coords.lat = position.coords.latitude;
+    coords.lon = position.coords.longitude;
+	centrePosition= [coords.lat, coords.lon] ;
 centrePosition= [coords.lat, coords.lon] ;	
-k.innerHTML = centrePosition;	
+k.innerHTML = centrePosition;
+}
+
+
 
 
 var x = document.getElementById("demo");
 var source1x= [-15, +15];
-
 
 function setCenterLocation() {
     if (navigator.geolocation) {
