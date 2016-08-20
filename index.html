@@ -106,9 +106,10 @@ gain3.gain.value = gain3Slider.value;
 var x = document.getElementById("demo");
 var source1x= [-15, +15];
 
+
 function setCenterLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(getPosition);
+        position = navigator.geolocation.getCurrentPosition(getPosition);
 		centrePosition= [position.coords.latitude, position.coords.longitude] ;
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";
