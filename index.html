@@ -107,12 +107,19 @@ gain3.gain.value = gain3Slider.value;
 });
 
 //geolocalisation
+
 var k = document.getElementById("test");
-k.innerHTML = "test gpfbffghghgf";
+var coords = {lat: "", lon: ""};
+pos1 = navigator.geolocation.getCurrentPosition();
+coords.lat = pos1.coords.latitude;
+coords.lon = pos1.coords.longitude;
+centrePosition= [coords.lat, coords.lon] ;	
+k.innerHTML = centrePosition;	
+
 
 var x = document.getElementById("demo");
 var source1x= [-15, +15];
-var coords = {lat: "", lon: ""};
+
 
 function setCenterLocation() {
     if (navigator.geolocation) {
