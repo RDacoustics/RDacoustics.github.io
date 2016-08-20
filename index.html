@@ -108,16 +108,16 @@ var source1x= [-15, +15];
 
 function setCenterLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(setPosition);
-		
+        navigator.geolocation.getCurrentPosition(getPosition);
+		centrePosition= [position.coords.latitude, position.coords.longitude] ;
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
-function setPosition(position) {
+function getPosition(position) {
     x.innerHTML = "Point central - Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
-    return [position.coords.latitude, position.coords.longitude] ;
+     x.innerHTML = centrePosition;
 }
 
 
