@@ -122,6 +122,7 @@ function getPosition(position) {
 	centrePosition= [coords.lat, coords.lon] ;
     x.innerHTML = "Point central - Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
+	x.innerHTML =centrePosition;
 }
 
 navigator.geolocation.watchPosition(function(position) {
