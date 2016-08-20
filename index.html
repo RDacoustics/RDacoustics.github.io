@@ -105,13 +105,14 @@ gain3.gain.value = gain3Slider.value;
 
 var x = document.getElementById("demo");
 var source1x= [-15, +15];
-var lat = position.coords.latitude;
-var lon = position.coords.longitude;
+
 
 function setCenterLocation() {
 ;
     if (navigator.geolocation) {
         position = navigator.geolocation.getCurrentPosition(getPosition);
+		var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
 		centrePosition= [lat, lon] ;
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";
