@@ -75,7 +75,6 @@ decoder.out.connect(masterGain);
 masterGain.connect(context.destination);
 
 
-
 // function to assign sample to the sound buffer for playback (and enable playbutton)
 var assignSample2SoundBuffer = function(decodedBuffer) {
     soundBuffer = decodedBuffer;
@@ -206,11 +205,18 @@ function mouseAction(mouse) {
     document.getElementById("azim-value").innerHTML = mouseXPos;
 }
 
+
+// position source1
+
+
+
+
+
 Number.prototype.toRadians = function() {
    return this * Math.PI / 180;
 }
 
-function calcDistance(lat1, lat2, lon1, lon2) {
+function calcDistanceGPS(lat1, lat2, lon1, lon2) {
 	var R = 6371e3;
     var y1 = lat1.toRadians();
     var y2 = lat2.toRadians();
@@ -225,12 +231,19 @@ function calcDistance(lat1, lat2, lon1, lon2) {
     return(R * c) ;
 }
 
-function calcXY(coord1, coord2){
-	x = calcDistance(coord1[0], coord1[0], coord1[1], coord2[1]);
-	y = calcDistance(coord1[0], coord2[0], coord1[1], coord1[1]);
+function calcPosition(coord1, coord2){
+	x = calcDistanceGPS(coord1[0], coord1[0], coord1[1], coord2[1]);
+	y = calcDistanceGPS(coord1[0], coord2[0], coord1[1], coord1[1]);
 	
 	if (coord1[1]-coord2[1] > 0 ) { x = -x ;}
 	if (coord1[0]-coord2[0] > 0) {y = -y ;}
 	return [x, y];
+}
+function calcDistanceReceiverBordSource(recx, recy,sx,sy,rayon) {
+	//intersection entre ligne "source receiver" et coverage circle de source
+    var m= (recy-sy)/(recx-sx);
+	var d=  m;
+
+    return(d) ;
 }
 

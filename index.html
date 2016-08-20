@@ -63,7 +63,7 @@
 			</tr>
 		</table>
 
-<button onclick="getLocation()">Get GPS coordinates</button>
+<button onclick="setCenterLocation()">Set Canvas Center coordinates</button>
 
 <p id="demo"></p>
 
@@ -104,17 +104,30 @@ gain3.gain.value = gain3Slider.value;
 //geolocalisation
 
 var x = document.getElementById("demo");
-function getLocation() {
+var source1x= [-15, +15];
+
+function setCenterLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(setPosition);
+		
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
-function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + 
+function setPosition(position) {
+    x.innerHTML = "Point central - Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
+    return [position.coords.latitude, position.coords.longitude] ;
 }
+
+
+
+
+
+	//currentPosition= calcPosition(coord1, coord2)
+
+
+
 ////////////////////////////
 // SET-UP GUI AND USER INPUT
 var canvas = document.getElementById('Canvas');
@@ -136,15 +149,9 @@ var Marker = function () {
 }
 var marker = new Marker();
 
-
-
-
  // Move the marker to current location
 // marker.XPos = mouseXPos - (marker.Width/2);
 // marker.YPos = mouseYPos - (marker.Height/2);
-
-
-
 
 function draw() {
     requestAnimationFrame(draw);
