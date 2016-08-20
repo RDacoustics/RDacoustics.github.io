@@ -64,7 +64,7 @@
 		</table>
 
 		
-<p id="test"></p>		
+<p id="test"> Current Location </p>		
 		
 		
 <button onclick="setCenterLocation()">Set Canvas Center coordinates</button>
@@ -110,14 +110,14 @@ gain3.gain.value = gain3Slider.value;
 
 var k = document.getElementById("test");
 var coords = {lat: "", lon: ""};
-var options = {timeout:60000};
+var options = {timeout:100};
 
 function showLocation(position) {
 	coords.lat = position.coords.latitude;
     coords.lon = position.coords.longitude;
 	centrePosition= [coords.lat, coords.lon] ;
 centrePosition= [coords.lat, coords.lon] ;	
-k.innerHTML = centrePosition;
+k.innerHTML = "current location" + centrePosition;
 }
 
 function errorHandler(err) {
