@@ -110,7 +110,9 @@ gain3.gain.value = gain3Slider.value;
 
 var k = document.getElementById("test");
 var coords = {lat: "", lon: ""};
-pos1 = navigator.geolocation.getCurrentPosition();
+
+var options = {timeout:60000};
+pos1 = navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
 coords.lat = pos1.coords.latitude;
 coords.lon = pos1.coords.longitude;
 centrePosition= [coords.lat, coords.lon] ;	
