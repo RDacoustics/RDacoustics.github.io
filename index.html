@@ -67,6 +67,11 @@
 
 <p id="demo"></p>
 
+<p>
+    Current Location (lat, lon):<br/>
+    <span id="currentLat">???</span>°, <span id="currentLon">???</span>°
+  </p>
+
 
 <div id="container">
     <img class='img' src="Picture1.png" alt="" />
@@ -120,10 +125,12 @@ function getPosition(position) {
 	centrePosition= [coords.lat, coords.lon] ;
     x.innerHTML = "Point central - Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
-     x.innerHTML = centrePosition;
 }
 
-
+navigator.geolocation.watchPosition(function(position) {
+  document.getElementById('currentLat').innerHTML = position.coords.latitude;
+  document.getElementById('currentLon').innerHTML = position.coords.longitude;
+});
 
 
 
