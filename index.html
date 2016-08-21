@@ -64,7 +64,7 @@
 		</table>
 
 		
-<p id="test"> Current Location </p>		
+<p id="test"> </p>		
 		
 		
 <button onclick="setCenterLocation()">Set Canvas Center coordinates</button>
@@ -111,10 +111,7 @@ gain3.gain.value = gain3Slider.value;
 var k = document.getElementById("test");
 var coords = {lat: "", lon: ""};
 
-f();
-
-var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
-
+/* var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
 function f() {
         // Update every 100 ms seconds
         var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 100 };
@@ -132,6 +129,8 @@ function onSuccess(position) {
       alert('code: '    + error.code    + '\n' +
             'message: ' + error.message + '\n');
     }
+		
+f(); */
 	
 		
 function showLocation(position) {
