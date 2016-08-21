@@ -107,7 +107,7 @@ gain3.gain.value = gain3Slider.value;
 
 
 //define playground
-var source1x= [-15, +15];
+var source1x= [-15, +15]; // [x, y]en metres
 
 //  pixels per meter
 var PPM = 18; //366 pixels for around 20 m 
@@ -213,7 +213,19 @@ var Marker = function () {
 }
 var marker = new Marker();
 
-
+var MarkerSource = function () {
+    this.Sprite = new Image();
+    // this.Sprite.src = "https://dl.dropboxusercontent.com/u/6300538/WebAmbi/cursor.png"
+    this.Sprite.src = "images/source.png"
+    this.Width = 60;
+    this.Height = 59;
+    // marker to 
+    this.XPos = source1x[0]*PPM;
+    this.YPos = source1x[1]*PPM;
+	Xposcentre = this.XPos;
+	Yposcentre = this.YPos;
+}
+var markerSource = new MarkerSource();
 
 function draw() {
     requestAnimationFrame(draw);
@@ -224,6 +236,7 @@ function draw() {
     canvas_context.drawImage(mapSprite, 0, 0);
     // Draw marker
     canvas_context.drawImage(marker.Sprite, marker.XPos, marker.YPos, marker.Width, marker.Height);
+	canvas_context.drawImage(markerSource.Sprite, markerSource.XPos, markerSource.YPos, markerSource.Width, markerSource.Height);
     // run example specific draw callback
     if (!(typeof(drawLocal)=='undefined')) { drawLocal(); }
    
