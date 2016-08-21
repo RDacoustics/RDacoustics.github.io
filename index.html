@@ -65,12 +65,10 @@
 
 		
 <p id="test"> </p>	
-
+<p id="demo"></p>
 		
 <button onclick="setCenterLocation()">Set Canvas Center coordinates</button>
-<p id="demo"></p>
 
-<!-- <p>Center position:<br/> <span id="center">???</span> </p> -->
 
 
 <div id="container">
@@ -78,9 +76,6 @@
     <canvas id="Canvas" width="964" height="732"></canvas>
 </div>
 
-<!-- <p>Current Location (lat, lon):<br/>
-    <span id="currentLat">???</span>°, <span id="currentLon">???</span>° </p>
- -->
 
 <script>
 
@@ -116,27 +111,7 @@ var source1x= [-15, +15];
 
 //geolocalisation
 
-// define center of playground		 
-var x = document.getElementById("demo");
-var coords = {lat: "", lon: ""};
-var centrePosition= [0, 0];
-
-
-function setCenterLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(getPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
-function getPosition(position) {
-	coords.lat = position.coords.latitude;
-    coords.lon = position.coords.longitude;
-	centrePosition= [coords.lat, coords.lon] ;
-	x.innerHTML = "Center of playground location:" + centrePosition;
-}
-
-
+// current GPS position 
 var k = document.getElementById("test");
 var currentPosition= [0, 0];
 var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
@@ -147,8 +122,8 @@ function f() {
     // onSuccess Geolocation
 function onSuccess(position) {
 	currentPosition= [position.coords.latitude, position.coords.longitude] ;
-	 curentPosXY = calcPosition(centrePosition,currentPosition );
-    k.innerHTML= "current location:" + currentPosition +"    currentposition for canvas:" +currentPosition ;
+	 curentPosXY = calcPosition(centerPosition,currentPosition );
+    k.innerHTML= "current location:" + currentPosition +"    current position for canvas:" +currentPosXY ;
     }			
   // onError Callback receives a PositionError object
 function onError(error) {
@@ -157,6 +132,24 @@ function onError(error) {
     }
 		
 window.onload = f;
+	
+	
+// define center of playground		 
+var x = document.getElementById("demo");
+var coords = {lat: "", lon: ""};
+var centerPosition= [0, 0];
+
+function setCenterLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getPosition);
+    } 
+}
+function getPosition(position) {
+	coords.lat = position.coords.latitude;
+    coords.lon = position.coords.longitude;
+	centerPosition= [coords.lat, coords.lon] ;
+	x.innerHTML = "Center of playground location:" + centerPosition;
+}	
 	
 	
 /* function showLocation(position) {
