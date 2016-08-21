@@ -64,8 +64,8 @@
 		</table>
 
 		
-//<p id="test"> </p>		
-<textarea id="result" cols="100" rows="10"></textarea>	
+<p id="test"> </p>	
+
 		
 <button onclick="setCenterLocation()">Set Canvas Center coordinates</button>
 <p id="demo"></p>
@@ -113,38 +113,35 @@ gain3.gain.value = gain3Slider.value;
 
 var k = document.getElementById("test");
 var coords = {lat: "", lon: ""};
-
 var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
+
 function f() {
-        // Update every 1 ms seconds
-        var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
-        watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+    // Update every 1 ms seconds
+    watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
     }
     // onSuccess Geolocation
 function onSuccess(position) {
-        var str = 'Latitude: '  + position.coords.latitude      + '<br>' +
-                  'Longitude: ' + position.coords.longitude     + '<br>' +
-                  'Timestamp: ' + position.timestamp     + '<br>\r\n' ;
-        document.getElementById('test').value += str;
+	centrePosition= [position.coords.latitude, position.coords.longitude] ;
+    document.getElementById('test')= "current location" + centrePosition;
     }			
   // onError Callback receives a PositionError object
-    function onError(error) {
-      alert('code: '    + error.code    + '\n' +
+function onError(error) {
+    alert('code: '    + error.code    + '\n' +
             'message: ' + error.message + '\n');
     }
 		
 window.onload = f;
 	
 		
-function showLocation(position) {
+/* function showLocation(position) {
 	coords.lat = position.coords.latitude;
     coords.lon = position.coords.longitude;
 	centrePosition= [coords.lat, coords.lon] ;
 centrePosition= [coords.lat, coords.lon] ;	
 k.innerHTML = "current location" + centrePosition;
-}
+} */
 
-function errorHandler(err) {
+/* function errorHandler(err) {
             if(err.code == 1) {
                alert("Error: Access is denied!");
             }
@@ -153,7 +150,7 @@ function errorHandler(err) {
                alert("Error: Position is unavailable!");
             }
          }
-
+ */
 
 		 
 		 
@@ -177,13 +174,6 @@ function getPosition(position) {
 }
 
    
-
-//navigator.geolocation.watchPosition(function(position) {
- // document.getElementById('currentLat').innerHTML = position.coords.latitude;
- // document.getElementById('currentLon').innerHTML = position.coords.longitude;
-//  }); 
-
-
   //currentPosition= calcPosition(coord1, coord2)
 
 
