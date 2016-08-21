@@ -234,11 +234,25 @@ function calcPosition(coord1, coord2){
 	if (coord1[0]-coord2[0] > 0) {y = -y ;}
 	return [y,x]; // latitude, longitude
 }
-function calcDistanceReceiverBordSource(recx, recy,sx,sy,rayon) {
-	//intersection entre ligne "source receiver" et coverage circle de source
-    var m= (recy-sy)/(recx-sx);
-	var d=  m;
-
-    return(d) ;
+function calcDistanceReceiverBordSource(recx,recy,sx,sy,rayon) {
+	//coordonnées de l'intersection entre ligne "source receiver" et coverage circle de source
+	// y=mx+c
+	// données en mètres
+    m= (recy-sy)/(recx-sx);
+	c=sy-(m*sx);
+	A= ((m*m)+1);
+	B=2*((m*c)-(m*sy)-sx);
+	C=((sy*sy)-(rayon*rayon)+(sx*sx)-(2*(c*sy))+(c*c));
+	
+	x1=((-B)+Math.sqrt((B*B)-(4*A*C)))/(2*A);
+	x2=((-B)-Math.sqrt((B*B)-(4*A*C)))/(2*A);
+	y1=(m*x1)+c;
+	y2=(m*x2)+c;
+	
+	//check which of the 2 intersection points is the closer to the receiver
+	d1= Math.sqrt(((recx-x1)*(recx-x1))+((recy-y1)*(recy-y1)));
+	d2= Math.sqrt(((recx-x2)*(recx-x2))+((recy-y2)*(recy-y2)));
+	d= Math.min(d1, d2);
+    return [d];
 }
 
