@@ -129,7 +129,7 @@ var coords = {lat: "", lon: ""};
 function setCenterLocation() {
     navigator.geolocation.getCurrentPosition(getPosition);
     } 
-}
+
 function getPosition(position) {
 	alert("button works!");
 	coords.lat = position.coords.latitude;
