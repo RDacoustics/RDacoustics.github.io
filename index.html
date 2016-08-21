@@ -126,7 +126,7 @@ function f() {
 function onSuccess(position) {
 	currentPosition= [position.coords.latitude, position.coords.longitude] ;
 	currentPosYX = calcPosition(currentPosition, centerPosition);
-    k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosXY ;
+    k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX ;
  // Move the marker to current location
     marker.XPos = Xposcentre+ Math.round(currentPosYX[1])*PPM;
 	marker.YPos = Yposcentre+ Math.round(currentPosYX[0])*PPM;
