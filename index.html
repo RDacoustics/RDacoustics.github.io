@@ -215,13 +215,12 @@ var marker = new Marker();
 
 var MarkerSource = function () {
     this.Sprite = new Image();
-    // this.Sprite.src = "https://dl.dropboxusercontent.com/u/6300538/WebAmbi/cursor.png"
     this.Sprite.src = "images/source.png"
     this.Width = 60;
     this.Height = 59;
     // marker to 
-    this.XPos = source1x[0]*PPM;
-    this.YPos = source1x[1]*PPM;
+    this.XPos = Xposcentre+source1x[0]*PPM;
+    this.YPos = Yposcentre+source1x[1]*PPM;
 }
 var markerSource = new MarkerSource();
 
@@ -232,7 +231,7 @@ function draw() {
     canvas_context.fillRect(0, 0, canvas.width, canvas.height);
     // Draw map
     canvas_context.drawImage(mapSprite, 0, 0);
-    // Draw marker
+    // Draw markers
     canvas_context.drawImage(marker.Sprite, marker.XPos, marker.YPos, marker.Width, marker.Height);
 	canvas_context.drawImage(markerSource.Sprite, markerSource.XPos, markerSource.YPos, markerSource.Width, markerSource.Height);
     // run example specific draw callback
