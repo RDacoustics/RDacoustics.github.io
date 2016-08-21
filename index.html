@@ -118,19 +118,39 @@ var PPM = 18; //366 pixels for around 20 m
 
 
 //geolocalisation
-
-// current GPS position 
 var k = document.getElementById("showdata");
 var currentPosition= [0, 0];
-var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
+var centerPosition= [0, 0];
+	
+	
+	
+// define center of playground by clicking on button 
+var coords = {lat: "", lon: ""};
+function setCenterLocation() {
+    navigator.geolocation.getCurrentPosition(getPosition);
+    } 
+}
+function getPosition(position) {
+	alert("button works!");
+	coords.lat = position.coords.latitude;
+    coords.lon = position.coords.longitude;
+	centerPosition= [coords.lat, coords.lon] ;
+	currentPosYX = calcPosition(currentPosition, centerPosition);
+	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX;
+}	
+
+
+
+// current GPS position 
+
+var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 100};
 function f() {
-    // Update every 1 ms seconds
+    // Update every 100 ms seconds
     watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
     }
     // onSuccess Geolocation
 function onSuccess(position) {
 	currentPosition= [position.coords.latitude, position.coords.longitude] ;
-	centerPosition= currentPosition;
 	currentPosYX = calcPosition(currentPosition, centerPosition);
     k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX;
  // Move the marker to current location
@@ -145,24 +165,7 @@ function onError(error) {
 		
 window.onload = f;
 
-	
-// define center of playground by clicking on button 
-var coords = {lat: "", lon: ""};
-//var centerPosition= [0, 0];
-function setCenterLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(getPosition);
-    } 
-}
-function getPosition(position) {
-	alert("button works!");
-	coords.lat = position.coords.latitude;
-    coords.lon = position.coords.longitude;
-	centerPosition= [coords.lat, coords.lon] ;
 
-	currentPosYX = calcPosition(currentPosition, centerPosition);
-	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX;
-}	
 	
 	
 /* function showLocation(position) {
