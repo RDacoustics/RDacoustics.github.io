@@ -141,11 +141,12 @@ var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccur
 function f() {
     // Update every 1 ms seconds
     watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+    curentPosXY = calcPosition(centrePosition,currentPosition );
     }
     // onSuccess Geolocation
 function onSuccess(position) {
-	centrePosition= [position.coords.latitude, position.coords.longitude] ;
-    k.innerHTML= "current location:" + centrePosition;
+	currentPosition= [position.coords.latitude, position.coords.longitude] ;
+    k.innerHTML= "current location:" + currentPosition +"    Position du current:" +currentPosition ;
     }			
   // onError Callback receives a PositionError object
 function onError(error) {
