@@ -119,6 +119,8 @@ var source1x= [-15, +15];
 // define center of playground		 
 var x = document.getElementById("demo");
 var coords = {lat: "", lon: ""};
+var centrePosition= [0, 0];
+
 
 function setCenterLocation() {
     if (navigator.geolocation) {
@@ -131,7 +133,6 @@ function getPosition(position) {
 	coords.lat = position.coords.latitude;
     coords.lon = position.coords.longitude;
 	centrePosition= [coords.lat, coords.lon] ;
-    //document.getElementById("center").innerHTML = centrePosition;
 	x.innerHTML = "Center of playground location:" + centrePosition;
 }
 
