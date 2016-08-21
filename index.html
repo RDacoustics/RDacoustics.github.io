@@ -122,7 +122,7 @@ function f() {
     // onSuccess Geolocation
 function onSuccess(position) {
 	centrePosition= [position.coords.latitude, position.coords.longitude] ;
-    document.getElementById('test')= "current location" + centrePosition;
+    k.innerHTML= "current location" + centrePosition;
     }			
   // onError Callback receives a PositionError object
 function onError(error) {
