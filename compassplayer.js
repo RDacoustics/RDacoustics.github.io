@@ -232,7 +232,7 @@ function calcPosition(coord1, coord2){
 	
 	if (coord1[1]-coord2[1] > 0 ) { x = -x ;}
 	if (coord1[0]-coord2[0] > 0) {y = -y ;}
-	return [x, y];
+	return [y,x]; // latitude, longitude
 }
 function calcDistanceReceiverBordSource(recx, recy,sx,sy,rayon) {
 	//intersection entre ligne "source receiver" et coverage circle de source
