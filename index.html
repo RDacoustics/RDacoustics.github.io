@@ -159,6 +159,8 @@ function getPosition(position) {
 // current GPS position 
 
 var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 100};
+var recBordSource1= [0,0,0];
+
 function f() {
     // Update every 100 ms seconds
     watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
@@ -171,20 +173,11 @@ function onSuccess(position) {
     marker.XPos = Xposcentre+ Math.round(currentPosYX[1])*PPM;
 	marker.YPos = Yposcentre+ Math.round(currentPosYX[0])*PPM;
 // SOurce 1 calcul distance current position- bord du coverage source
-	[xb1,yb1,s1d]= calcDistanceReceiverBordSource(currentPosYX[1],currentPosYX[0],source1x[0],source1x[1],source1R);
+	recBordSource1= calcDistanceReceiverBordSource(currentPosYX[1],currentPosYX[0],source1x[0],source1x[1],source1R);
 //affiche les données	
 	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" + currentPosYX;
-    ks1.innerHTML= "Position bord:"+xb1+"/"+yb1+ "distance Source 1 border: "+ s1d;		
+    ks1.innerHTML= "Position bord:"+recBordSource1[0]+"/"+recBordSource1[1]+ "distance Source 1 border: "+ recBordSource1[2];		
 	
-	// draw line receiver  - border
-	canvas_context.beginPath();
-	canvas_context.moveTo(Xposcentre+ Math.round(currentPosYX[1])*PPM,Yposcentre+ Math.round(currentPosYX[0])*PPM); // current 
-    canvas_context.lineTo(Xposcentre+ Math.round(xb1)*PPM,Yposcentre+ Math.round(yb1)*PPM);
-	canvas_context.lineWidth = 2;
-    canvas_context.strokeStyle = '#e0e0d1'; 
-    canvas_context.stroke();
-	
-
 	}	
 
 	
@@ -276,6 +269,15 @@ function draw() {
     canvas_context.fillRect(0, 0, canvas.width, canvas.height);
     // Draw map
     canvas_context.drawImage(mapSprite, 0, 0);
+	
+ // draw line receiver  - border
+	canvas_context.beginPath();
+	canvas_context.moveTo(Xposcentre+ Math.round(currentPosYX[1])*PPM,Yposcentre+ Math.round(currentPosYX[0])*PPM); // current 
+    canvas_context.lineTo(Xposcentre+ Math.round(recBordSource1[0])*PPM,Yposcentre+ Math.round(recBordSource1[1])*PPM);
+	canvas_context.lineWidth = 2;
+    canvas_context.strokeStyle = '#e0e0d1'; 
+    canvas_context.stroke();
+	
 	
 	// Draw circles 
 	   //s1 source
