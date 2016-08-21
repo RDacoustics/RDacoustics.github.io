@@ -219,7 +219,7 @@ k.innerHTML = "current location" + centrePosition;
 // SET-UP GUI AND USER INPUT
 var canvas = document.getElementById('Canvas');
 var canvas_context = canvas.getContext("2d");
-
+canvas_context.transform(1, 0, 0, -1, 0, canvas.height);
 
 var Xposcentre = 0 
 var Yposcentre = 0 ;
@@ -264,7 +264,6 @@ function draw() {
     canvas_context.fillStyle = "#000";
     canvas_context.fillRect(0, 0, canvas.width, canvas.height);
     // Draw map
-	//The origin is in the top-left corner, and increasing values go down rather than up
     canvas_context.drawImage(mapSprite, 0, 0);
     // Draw markers
 	// added - 
