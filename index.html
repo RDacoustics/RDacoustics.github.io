@@ -128,8 +128,8 @@ function onSuccess(position) {
 	currentPosXY = calcPosition(centerPosition,currentPosition );
     k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosXY ;
  // Move the marker to current location
-    marker.XPos = Math.round(currentPosXY[1])*PPM;
-	marker.YPos = Math.round(currentPosXY[0])*PPM;
+    marker.XPos = Xposcentre+ Math.round(currentPosXY[1])*PPM;
+	marker.YPos = Yposcentre+ Math.round(currentPosXY[0])*PPM;
 	}			
   // onError Callback receives a PositionError object
 function onError(error) {
@@ -191,6 +191,8 @@ var canvas = document.getElementById('Canvas');
 var canvas_context = canvas.getContext("2d");
 
 
+var Xposcentre = 0 
+var Yposcentre = 0 ;
 
 // Map sprite
 var mapSprite = new Image();
@@ -206,6 +208,8 @@ var Marker = function () {
     // marker to canvas center
     this.XPos = (document.getElementById('Canvas').width / 2) - this.Width/2;
     this.YPos = (document.getElementById('Canvas').height / 2) - this.Width/2;
+	Xposcentre = this.XPos;
+	Yposcentre = this.YPos;
 }
 var marker = new Marker();
 
