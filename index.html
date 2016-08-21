@@ -109,12 +109,35 @@ gain3Slider.addEventListener('input', function(input) {
 gain3.gain.value = gain3Slider.value;
 });
 
+
+//define playground
+var source1x= [-15, +15];
+
+
 //geolocalisation
 
-var k = document.getElementById("test");
+// define center of playground		 
+var x = document.getElementById("demo");
 var coords = {lat: "", lon: ""};
-var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
 
+function setCenterLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function getPosition(position) {
+	coords.lat = position.coords.latitude;
+    coords.lon = position.coords.longitude;
+	centrePosition= [coords.lat, coords.lon] ;
+    //document.getElementById("center").innerHTML = centrePosition;
+	x.innerHTML = "Center of playground location:" + centrePosition;
+}
+
+
+var k = document.getElementById("test");
+var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
 function f() {
     // Update every 1 ms seconds
     watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
@@ -122,7 +145,7 @@ function f() {
     // onSuccess Geolocation
 function onSuccess(position) {
 	centrePosition= [position.coords.latitude, position.coords.longitude] ;
-    k.innerHTML= "current location" + centrePosition;
+    k.innerHTML= "current location:" + centrePosition;
     }			
   // onError Callback receives a PositionError object
 function onError(error) {
@@ -132,7 +155,7 @@ function onError(error) {
 		
 window.onload = f;
 	
-		
+	
 /* function showLocation(position) {
 	coords.lat = position.coords.latitude;
     coords.lon = position.coords.longitude;
@@ -153,25 +176,7 @@ k.innerHTML = "current location" + centrePosition;
  */
 
 		 
-		 
-var x = document.getElementById("demo");
-var source1x= [-15, +15];
 
-function setCenterLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(getPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
-function getPosition(position) {
-	coords.lat = position.coords.latitude;
-    coords.lon = position.coords.longitude;
-	centrePosition= [coords.lat, coords.lon] ;
-    //document.getElementById("center").innerHTML = centrePosition;
-	x.innerHTML = "Point central - Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;
-}
 
    
   //currentPosition= calcPosition(coord1, coord2)
