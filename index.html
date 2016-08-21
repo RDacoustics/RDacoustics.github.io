@@ -130,6 +130,7 @@ function f() {
     // onSuccess Geolocation
 function onSuccess(position) {
 	currentPosition= [position.coords.latitude, position.coords.longitude] ;
+	centerPosition= currentPosition;
 	currentPosYX = calcPosition(currentPosition, centerPosition);
     k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX;
  // Move the marker to current location
@@ -149,7 +150,6 @@ window.onload = f;
 var coords = {lat: "", lon: ""};
 //var centerPosition= [0, 0];
 function setCenterLocation() {
-
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(getPosition);
     } 
