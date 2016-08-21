@@ -137,6 +137,7 @@ function getPosition(position) {
 	centerPosition= [coords.lat, coords.lon] ;
 	currentPosYX = calcPosition(currentPosition, centerPosition);
 	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX;
+	f();
 }	
 
 
@@ -163,7 +164,7 @@ function onError(error) {
             'message: ' + error.message + '\n');
     }
 		
-window.onload = f;
+//window.onload = f;
 
 
 	
