@@ -108,8 +108,10 @@ gain3.gain.value = gain3Slider.value;
 
 //define playground
 var source1x= [-15, +15]; // [x, y]en metres
+var source2x= [10, +10]; // [x, y]en metres
 
-//  pixels per meter
+
+//  Map scale - pixels per meter
 var PPM = 18; //366 pixels for around 20 m 
 
 //geolocalisation
@@ -212,17 +214,19 @@ var Marker = function () {
 	Yposcentre = this.YPos;
 }
 var marker = new Marker();
+// sourcexy= [0, 0];
 
-var MarkerSource = function () {
+var MarkerSource = function (sourcexy) {
     this.Sprite = new Image();
     this.Sprite.src = "images/source.png"
     this.Width = 60;
     this.Height = 59;
     // marker to 
-    this.XPos = Xposcentre+source1x[0]*PPM;
-    this.YPos = Yposcentre+source1x[1]*PPM;
+    this.XPos = Xposcentre+sourcexy[0]*PPM;
+    this.YPos = Yposcentre+sourcexy[1]*PPM;
 }
-var markerSource = new MarkerSource();
+var markerSource1 = new MarkerSource(source1x);
+
 
 function draw() {
     requestAnimationFrame(draw);
@@ -233,7 +237,7 @@ function draw() {
     canvas_context.drawImage(mapSprite, 0, 0);
     // Draw markers
     canvas_context.drawImage(marker.Sprite, marker.XPos, marker.YPos, marker.Width, marker.Height);
-	canvas_context.drawImage(markerSource.Sprite, markerSource.XPos, markerSource.YPos, markerSource.Width, markerSource.Height);
+	canvas_context.drawImage(markerSource1.Sprite, markerSource1.XPos, markerSource1.YPos, markerSource1.Width, markerSource1.Height);
     // run example specific draw callback
     if (!(typeof(drawLocal)=='undefined')) { drawLocal(); }
    
