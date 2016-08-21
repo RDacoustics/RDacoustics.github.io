@@ -261,10 +261,12 @@ function draw() {
     canvas_context.fillStyle = "#000";
     canvas_context.fillRect(0, 0, canvas.width, canvas.height);
     // Draw map
+	//The origin is in the top-left corner, and increasing values go down rather than up
     canvas_context.drawImage(mapSprite, 0, 0);
     // Draw markers
-	canvas_context.drawImage(markerSource1.Sprite, markerSource1.XPos, markerSource1.YPos, markerSource1.Width, markerSource1.Height);
-	canvas_context.drawImage(markerSource2.Sprite, markerSource2.XPos, markerSource2.YPos, markerSource2.Width, markerSource2.Height);
+	// added - 
+	canvas_context.drawImage(markerSource1.Sprite, markerSource1.XPos, - markerSource1.YPos, markerSource1.Width, markerSource1.Height);
+	canvas_context.drawImage(markerSource2.Sprite, markerSource2.XPos, - markerSource2.YPos, markerSource2.Width, markerSource2.Height);
 	canvas_context.drawImage(marker.Sprite, marker.XPos, marker.YPos, marker.Width, marker.Height);
     // run example specific draw callback
     if (!(typeof(drawLocal)=='undefined')) { drawLocal();	}
