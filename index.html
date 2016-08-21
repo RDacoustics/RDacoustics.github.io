@@ -157,6 +157,7 @@ function getPosition(position) {
 	coords.lat = position.coords.latitude;
     coords.lon = position.coords.longitude;
 	centerPosition= [coords.lat, coords.lon] ;
+	alert("button works!");
 	currentPosYX = calcPosition(currentPosition, centerPosition);
 	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX;
 }	
