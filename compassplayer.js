@@ -231,7 +231,8 @@ function calcPosition(coord1, coord2){
 	y = calcDistanceGPS(coord1[0], coord2[0], coord1[1], coord1[1]);
 	
 	if (coord1[1]-coord2[1] > 0 ) { x = -x ;}
-	if (coord1[0]-coord2[0] > 0) {y = -y ;}
+	if (coord2[0]-coord1[0] > 0) {y = -y ;}
+
 	return [y,x]; // latitude, longitude
 }
 function calcDistanceReceiverBordSource(recx,recy,sx,sy,rayon) {
