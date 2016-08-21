@@ -62,10 +62,8 @@
 				<td id="beta"></td>
 			</tr>
 		</table>
-
-<p id="center"></p>	
-	
-<p id="test"> </p>	
+		
+<p id="showdata"> </p>	
 
 		
 <button onclick="setCenterLocation()">Set Canvas Center coordinates</button>
@@ -76,6 +74,9 @@
     <img class='img' src="Picture1.png" alt="" />
     <canvas id="Canvas" width="732" height="732"></canvas>
 </div>
+
+
+<p id="sourcePos"> </p>
 
 
 <script>
@@ -114,10 +115,12 @@ var source1x= [+10, +10]; // [x, y]en metres
 //  Map scale - pixels per meter
 var PPM = 18; //366 pixels for around 20 m 
 
+
+
 //geolocalisation
 
 // current GPS position 
-var k = document.getElementById("test");
+var k = document.getElementById("showdata");
 var currentPosition= [0, 0];
 var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
 function f() {
@@ -128,7 +131,7 @@ function f() {
 function onSuccess(position) {
 	currentPosition= [position.coords.latitude, position.coords.longitude] ;
 	currentPosYX = calcPosition(currentPosition, centerPosition);
-    k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX ;
+    k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX;
  // Move the marker to current location
     marker.XPos = Xposcentre+ Math.round(currentPosYX[1])*PPM;
 	marker.YPos = Yposcentre+ Math.round(currentPosYX[0])*PPM;
@@ -143,10 +146,8 @@ window.onload = f;
 
 	
 // define center of playground		 
-var x = document.getElementById("center");
 var coords = {lat: "", lon: ""};
 var centerPosition= [0, 0];
-
 function setCenterLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(getPosition);
@@ -156,7 +157,6 @@ function getPosition(position) {
 	coords.lat = position.coords.latitude;
     coords.lon = position.coords.longitude;
 	centerPosition= [coords.lat, coords.lon] ;
-	x.innerHTML = "Center of playground location:" + centerPosition;
 }	
 	
 	
@@ -226,6 +226,9 @@ var MarkerSource = function (sourcexy,sizeRatio) {
 }
 var markerSource1 = new MarkerSource(source1x,1.5);
 var markerSource2 = new MarkerSource(source2x,2);
+var m = document.getElementById("sourcePos");
+
+
 
 function draw() {
     requestAnimationFrame(draw);
@@ -239,7 +242,9 @@ function draw() {
 	canvas_context.drawImage(markerSource1.Sprite, markerSource1.XPos, markerSource1.YPos, markerSource1.Width, markerSource1.Height);
 	canvas_context.drawImage(markerSource2.Sprite, markerSource2.XPos, markerSource2.YPos, markerSource2.Width, markerSource2.Height);
     // run example specific draw callback
-    if (!(typeof(drawLocal)=='undefined')) { drawLocal(); }
+    if (!(typeof(drawLocal)=='undefined')) { drawLocal();	}
+	m.innerHTML= "Source 1" + source1x +"  "Source  2" + source2x ;  
+	
    
 
 };
