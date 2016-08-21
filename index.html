@@ -62,12 +62,16 @@
 				<td id="beta"></td>
 			</tr>
 		</table>
-		
-<p id="showdata"> </p>	
 
-		
 <button onclick="setCenterLocation()">Set Canvas Center coordinates</button>
-<input type="button" onclick="stopWatch();" value="Stop WatchGPS"/>
+<input type="button" onclick="stopWatch();" value="Stop"/>		
+
+<p id="warning"> </p>			
+<br/>		
+<p id="showdata"> </p>	
+<br/>
+		
+
 
 
 <div id="container">
@@ -119,6 +123,7 @@ var PPM = 18; //366 pixels for around 20 m
 
 //geolocalisation
 var k = document.getElementById("showdata");
+var kw = document.getElementById("warning");
 var currentPosition= [0, 0];
 var centerPosition= [0, 0];
 	
@@ -136,7 +141,9 @@ function getPosition(position) {
 	centerPosition= [coords.lat, coords.lon] ;
 	currentPosYX = calcPosition(currentPosition, centerPosition);
 	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX;
+	kw.innerHTML= "WARNING - PRESS Stop button to calibrate center;
 	f();
+	
 }	
 
  function stopWatch(){
