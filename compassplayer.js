@@ -227,8 +227,8 @@ function calcDistanceGPS(lat1, lat2, lon1, lon2) {
 }
 
 function calcPosition(coord1, coord2){
-	x = calcDistance(coord1[0], coord1[0], coord1[1], coord2[1]);
-	y = calcDistance(coord1[0], coord2[0], coord1[1], coord1[1]);
+	x = calcDistanceGPS(coord1[0], coord1[0], coord1[1], coord2[1]);
+	y = calcDistanceGPS(coord1[0], coord2[0], coord1[1], coord1[1]);
 	
 	if (coord1[1]-coord2[1] > 0 ) { x = -x ;}
 	if (coord1[0]-coord2[0] > 0) {y = -y ;}
