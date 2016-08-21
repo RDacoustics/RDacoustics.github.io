@@ -74,7 +74,7 @@
 
 <div id="container">
     <img class='img' src="Picture1.png" alt="" />
-    <canvas id="Canvas" width="964" height="732"></canvas>
+    <canvas id="Canvas" width="732" height="732"></canvas>
 </div>
 
 
@@ -109,6 +109,8 @@ gain3.gain.value = gain3Slider.value;
 //define playground
 var source1x= [-15, +15];
 
+//  pixels per meter
+var PPM = 18; //366 pixels for around 20 m 
 
 //geolocalisation
 
@@ -126,8 +128,8 @@ function onSuccess(position) {
 	currentPosXY = calcPosition(centerPosition,currentPosition );
     k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosXY ;
  // Move the marker to current location
-    marker.XPos = currentPosXY[1];
-	marker.YPos = currentPosXY[0];
+    marker.XPos = Math.round(currentPosXY[1])*PPM;
+	marker.YPos = Math.round(currentPosXY[0])*PPM;
 	}			
   // onError Callback receives a PositionError object
 function onError(error) {
@@ -187,6 +189,9 @@ k.innerHTML = "current location" + centrePosition;
 // SET-UP GUI AND USER INPUT
 var canvas = document.getElementById('Canvas');
 var canvas_context = canvas.getContext("2d");
+
+
+
 // Map sprite
 var mapSprite = new Image();
 // mapSprite.src = "https://dl.dropboxusercontent.com/u/6300538/WebAmbi/map.png";
