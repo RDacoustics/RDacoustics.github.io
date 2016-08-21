@@ -125,7 +125,10 @@ function onSuccess(position) {
 	currentPosition= [position.coords.latitude, position.coords.longitude] ;
 	currentPosXY = calcPosition(centerPosition,currentPosition );
     k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosXY ;
-    }			
+ // Move the marker to current location
+    marker.XPos = currentPosXY[1];
+	marker.YPos = currentPosXY[0];
+	}			
   // onError Callback receives a PositionError object
 function onError(error) {
     alert('code: '    + error.code    + '\n' +
@@ -133,7 +136,7 @@ function onError(error) {
     }
 		
 window.onload = f;
-	
+
 	
 // define center of playground		 
 var x = document.getElementById("center");
@@ -201,9 +204,7 @@ var Marker = function () {
 }
 var marker = new Marker();
 
- // Move the marker to current location
-// marker.XPos = mouseXPos - (marker.Width/2);
-// marker.YPos = mouseYPos - (marker.Height/2);
+
 
 function draw() {
     requestAnimationFrame(draw);
