@@ -116,8 +116,8 @@ var coords = {lat: "", lon: ""};
 
 var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
 function f() {
-        // Update every 100 ms seconds
-        var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 100 };
+        // Update every 1 ms seconds
+        var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
         watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
     }
     // onSuccess Geolocation
