@@ -253,7 +253,12 @@ function calcDistanceReceiverBordSource(recx,recy,sx,sy,rayon) {
 	//check which of the 2 intersection points is the closer to the receiver
 	d1= Math.abs(Math.sqrt(((recx-x1)*(recx-x1))+((recy-y1)*(recy-y1))));
 	d2= Math.abs(Math.sqrt(((recx-x2)*(recx-x2))+((recy-y2)*(recy-y2))));
-	d= Math.min(d1, d2);
-return [x1,y1,x2,y2,d];
+	if (d1 < d2) {
+    d= d1; x= x1; y=y1;
+	} else {
+    d= d2; x= x2; y=y2;
+    }
+
+return [x,y,d];
 }
 

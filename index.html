@@ -171,10 +171,20 @@ function onSuccess(position) {
     marker.XPos = Xposcentre+ Math.round(currentPosYX[1])*PPM;
 	marker.YPos = Yposcentre+ Math.round(currentPosYX[0])*PPM;
 // SOurce 1 calcul distance current position- bord du coverage source
-	[x1,y1,x2,y2,s1d]= calcDistanceReceiverBordSource(currentPosYX[1],currentPosYX[0],source1x[0],source1x[1],source1R);
+	[xb1,yb1,s1d]= calcDistanceReceiverBordSource(currentPosYX[1],currentPosYX[0],source1x[0],source1x[1],source1R);
 //affiche les données	
 	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" + currentPosYX;
-    ks1.innerHTML= "bord1:"+x1+"/"+y1+"  bord2:"+x2+"/"+y2+ "distance Source 1 border: "+ s1d;		
+    ks1.innerHTML= "Position bord:"+xb1+"/"+yb1+ "distance Source 1 border: "+ s1d;		
+	
+	// draw line receiver  - border
+	canvas_context.beginPath();
+	canvas_context.moveTo(Xposcentre+ Math.round(currentPosYX[1])*PPM,Yposcentre+ Math.round(currentPosYX[0])*PPM); // current 
+    canvas_context.lineTo(Xposcentre+ Math.round(xb1)*PPM,Yposcentre+ Math.round(yb1)*PPM);
+	canvas_context.lineWidth = 2;
+    canvas_context.strokeStyle = '#e0e0d1'; 
+    canvas_context.stroke();
+	
+
 	}	
 
 	
