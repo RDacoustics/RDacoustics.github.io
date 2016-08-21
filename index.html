@@ -110,8 +110,30 @@ gain3.gain.value = gain3Slider.value;
 
 var k = document.getElementById("test");
 var coords = {lat: "", lon: ""};
-var options = {timeout:100};
 
+f();
+
+var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
+
+function f() {
+        // Update every 100 ms seconds
+        var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 100 };
+        watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+    }
+    // onSuccess Geolocation
+function onSuccess(position) {
+        var str = 'Latitude: '  + position.coords.latitude      + '<br>' +
+                  'Longitude: ' + position.coords.longitude     + '<br>' +
+                  'Timestamp: ' + position.timestamp     + '<br>\r\n' ;
+        document.getElementById('test').value += str;
+    }			
+  // onError Callback receives a PositionError object
+    function onError(error) {
+      alert('code: '    + error.code    + '\n' +
+            'message: ' + error.message + '\n');
+    }
+	
+		
 function showLocation(position) {
 	coords.lat = position.coords.latitude;
     coords.lon = position.coords.longitude;
@@ -130,7 +152,7 @@ function errorHandler(err) {
             }
          }
 
-navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+
 		 
 		 
 var x = document.getElementById("demo");
