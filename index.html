@@ -113,6 +113,7 @@ gain3.gain.value = gain3Slider.value;
 
 //define playground
 var source1x= [10,-10]; // [x, y]en metres
+var source1R = 6;
 var source2x= [-15,15]; // [x, y]en metres
 
 //The origin is in the top-left corner, and increasing values go down rather than up
@@ -169,8 +170,8 @@ function onSuccess(position) {
      // Move the marker to current location
     marker.XPos = Xposcentre+ Math.round(currentPosYX[1])*PPM;
 	marker.YPos = Yposcentre+ Math.round(currentPosYX[0])*PPM;
-// calcul distance current position- bord du coverage source
-	[x1,y1,x2,y2,s1d]= calcDistanceReceiverBordSource(currentPosYX[1],currentPosYX[0],source1x[0],source1x[1],6);
+// SOurce 1 calcul distance current position- bord du coverage source
+	[x1,y1,x2,y2,s1d]= calcDistanceReceiverBordSource(currentPosYX[1],currentPosYX[0],source1x[0],source1x[1],source1R);
 //affiche les données	
 	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" + currentPosYX;
     ks1.innerHTML= "bord1:"+x1+"/"+y1+"  bord2:"+x2+"/"+y2+ "distance Source 1 border: "+ s1d;		
@@ -265,8 +266,14 @@ function draw() {
     canvas_context.fillRect(0, 0, canvas.width, canvas.height);
     // Draw map
     canvas_context.drawImage(mapSprite, 0, 0);
+	
+	// Draw circles 
+	   //s1
+    canvas_context.beginPath();
+    canvas_context.arc(Xposcentre+(source1x[0]*PPM), Yposcentre+(source1x[1]*PPM),source1R*PPM, 0, 2 * Math.PI);
+    canvas_context.stroke();
+	context.arc(x,y,r,sAngle,eAngle,counterclockwise);
     // Draw markers
-	// added - 
 	canvas_context.drawImage(markerSource1.Sprite, markerSource1.XPos, markerSource1.YPos, markerSource1.Width, markerSource1.Height);
 	canvas_context.drawImage(markerSource2.Sprite, markerSource2.XPos, markerSource2.YPos, markerSource2.Width, markerSource2.Height);
 	canvas_context.drawImage(marker.Sprite, marker.XPos, marker.YPos, marker.Width, marker.Height);
