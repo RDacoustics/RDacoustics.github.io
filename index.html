@@ -216,17 +216,17 @@ var Marker = function () {
 var marker = new Marker();
 // sourcexy= [0, 0];
 
-var MarkerSource = function (sourcexy) {
+var MarkerSource = function (sourcexy,sizeRatio) {
     this.Sprite = new Image();
     this.Sprite.src = "images/source.png"
-    this.Width = 60;
-    this.Height = 59;
+    this.Width = 60 *sizeRatio;
+    this.Height = 59*sizeRatio;
     // marker to 
     this.XPos = Xposcentre+sourcexy[0]*PPM;
     this.YPos = Yposcentre+sourcexy[1]*PPM;
 }
-var markerSource1 = new MarkerSource(source1x);
-
+var markerSource1 = new MarkerSource(source1x,1);
+var markerSource2 = new MarkerSource(source2x,1.5);
 
 function draw() {
     requestAnimationFrame(draw);
@@ -238,6 +238,7 @@ function draw() {
     // Draw markers
     canvas_context.drawImage(marker.Sprite, marker.XPos, marker.YPos, marker.Width, marker.Height);
 	canvas_context.drawImage(markerSource1.Sprite, markerSource1.XPos, markerSource1.YPos, markerSource1.Width, markerSource1.Height);
+	canvas_context.drawImage(markerSource2.Sprite, markerSource2.XPos, markerSource2.YPos, markerSource2.Width, markerSource2.Height);
     // run example specific draw callback
     if (!(typeof(drawLocal)=='undefined')) { drawLocal(); }
    
