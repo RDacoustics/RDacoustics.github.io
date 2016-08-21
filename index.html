@@ -141,13 +141,14 @@ function getPosition(position) {
 	centerPosition= [coords.lat, coords.lon] ;
 	currentPosYX = calcPosition(currentPosition, centerPosition);
 	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX;
-	kw.innerHTML= "WARNING - PRESS Stop button to calibrate center;
+	kw.innerHTML= "WARNING -it's ON -  Press Stop button to calibrate center";
 	f();
 	
 }	
 
  function stopWatch(){
     navigator.geolocation.clearWatch(watchID);
+	kw.innerHTML= "";
          }
 
 // current GPS position 
