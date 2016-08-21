@@ -170,10 +170,8 @@ function onSuccess(position) {
 // calcul distance current position- bord du coverage source
 	[x1,y1,x2,y2,s1d]= calcDistanceReceiverBordSource(currentPosYX[1],currentPosYX[0],source1x[0],source1x[1],6);
 //affiche les données	
-	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX;
-    ks1.innerHTML= "bord1:"+x1+"-"+y1+"  bord2:"+x2+"-"+y2+ "distance Source 1 border: "+ s1d;	
-	
-	
+	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" + currentPosYX;
+    ks1.innerHTML= "bord1:"+x1+"/"+y1+"  bord2:"+x2+"/"+y2+ "distance Source 1 border: "+ s1d;		
 	}	
 
 	
@@ -250,7 +248,7 @@ var MarkerSource = function (sourcexy,sizeRatio) {
     this.Height = 59*sizeRatio;
     // marker to 
     this.XPos = Xposcentre+sourcexy[0]*PPM;
-    this.YPos = Yposcentre-(sourcexy[1]*PPM);
+    this.YPos = Yposcentre+(sourcexy[1]*PPM);
 }
 var markerSource1 = new MarkerSource(source1x,1.5);
 var markerSource2 = new MarkerSource(source2x,2);
