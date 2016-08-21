@@ -147,14 +147,15 @@ window.onload = f;
 	
 // define center of playground by clicking on button 
 var coords = {lat: "", lon: ""};
-var centerPosition= [0, 0];
+//var centerPosition= [0, 0];
 function setCenterLocation() {
-	alert("button works!");
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(getPosition);
     } 
 }
 function getPosition(position) {
+	alert("button works!");
 	coords.lat = position.coords.latitude;
     coords.lon = position.coords.longitude;
 	centerPosition= [coords.lat, coords.lon] ;
