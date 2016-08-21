@@ -138,16 +138,17 @@ function getPosition(position) {
 
 
 var k = document.getElementById("test");
+var currentPosition= [0, 0];
 var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
 function f() {
     // Update every 1 ms seconds
     watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
-    curentPosXY = calcPosition(centrePosition,currentPosition );
     }
     // onSuccess Geolocation
 function onSuccess(position) {
 	currentPosition= [position.coords.latitude, position.coords.longitude] ;
-    k.innerHTML= "current location:" + currentPosition +"    Position du current:" +currentPosition ;
+	 curentPosXY = calcPosition(centrePosition,currentPosition );
+    k.innerHTML= "current location:" + currentPosition +"    currentposition for canvas:" +currentPosition ;
     }			
   // onError Callback receives a PositionError object
 function onError(error) {
