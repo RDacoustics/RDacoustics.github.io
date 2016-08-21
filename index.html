@@ -272,10 +272,15 @@ function draw() {
     canvas_context.beginPath();
     canvas_context.arc(Xposcentre+(source1x[0]*PPM),Yposcentre+(source1x[1]*PPM),source1R*PPM, 0, 2 * Math.PI);
     canvas_context.lineWidth = 5;
-     // set line color
-    canvas_context.strokeStyle = '#e0e0d1';
+    canvas_context.strokeStyle = '#e0e0d1';     // set line color
 	canvas_context.stroke();
-    
+    	   //s2 source
+    canvas_context.beginPath();
+    canvas_context.arc(Xposcentre+(source2x[0]*PPM),Yposcentre+(source2x[1]*PPM),source1R*PPM, 0, 2 * Math.PI);
+    canvas_context.lineWidth = 5;
+    canvas_context.strokeStyle = '#e0e0d1';     // set line color
+	canvas_context.stroke();
+	
 	// Draw markers
 	canvas_context.drawImage(markerSource1.Sprite, markerSource1.XPos, markerSource1.YPos, markerSource1.Width, markerSource1.Height);
 	canvas_context.drawImage(markerSource2.Sprite, markerSource2.XPos, markerSource2.YPos, markerSource2.Width, markerSource2.Height);
