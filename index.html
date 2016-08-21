@@ -108,7 +108,7 @@ gain3.gain.value = gain3Slider.value;
 
 //define playground
 var source1x= [-15, +15]; // [x, y]en metres
-var source2x= [10, +10]; // [x, y]en metres
+var source2x= [+10, +10]; // [x, y]en metres
 
 
 //  Map scale - pixels per meter
@@ -214,7 +214,6 @@ var Marker = function () {
 	Yposcentre = this.YPos;
 }
 var marker = new Marker();
-// sourcexy= [0, 0];
 
 var MarkerSource = function (sourcexy,sizeRatio) {
     this.Sprite = new Image();
@@ -223,7 +222,7 @@ var MarkerSource = function (sourcexy,sizeRatio) {
     this.Height = 59*sizeRatio;
     // marker to 
     this.XPos = Xposcentre+sourcexy[0]*PPM;
-    this.YPos = Yposcentre+sourcexy[1]*PPM;
+    this.YPos = Yposcentre-(sourcexy[1]*PPM);
 }
 var markerSource1 = new MarkerSource(source1x,1);
 var markerSource2 = new MarkerSource(source2x,1.5);
