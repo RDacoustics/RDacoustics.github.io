@@ -125,7 +125,7 @@ function f() {
     // onSuccess Geolocation
 function onSuccess(position) {
 	currentPosition= [position.coords.latitude, position.coords.longitude] ;
-	currentPosXY = calcPosition(centerPosition,currentPosition );
+	currentPosXY = calcPosition(centerPosition,currentPosition);
     k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosXY ;
  // Move the marker to current location
     marker.XPos = Xposcentre+ Math.round(currentPosXY[1])*PPM;
