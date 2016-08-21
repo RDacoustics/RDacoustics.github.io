@@ -250,8 +250,8 @@ var MarkerSource = function (sourcexy,sizeRatio) {
     this.Width = 60 *sizeRatio;
     this.Height = 59*sizeRatio;
     // marker 
-    this.XPos = Xposcentre+(sourcexy[0]*PPM);
-    this.YPos = Yposcentre+(sourcexy[1]*PPM);
+    this.XPos = Xposcentre+(sourcexy[0]*PPM)- this.Width/2;
+    this.YPos = Yposcentre+(sourcexy[1]*PPM)- this.Width/2;
 }
 var markerSource1 = new MarkerSource(source1x,1.5);
 var markerSource2 = new MarkerSource(source2x,2);
