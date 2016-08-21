@@ -149,6 +149,7 @@ window.onload = f;
 var coords = {lat: "", lon: ""};
 var centerPosition= [0, 0];
 function setCenterLocation() {
+	alert("button works!");
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(getPosition);
     } 
@@ -157,7 +158,7 @@ function getPosition(position) {
 	coords.lat = position.coords.latitude;
     coords.lon = position.coords.longitude;
 	centerPosition= [coords.lat, coords.lon] ;
-	alert("button works!");
+
 	currentPosYX = calcPosition(currentPosition, centerPosition);
 	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX;
 }	
