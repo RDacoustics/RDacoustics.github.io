@@ -115,6 +115,9 @@ gain3.gain.value = gain3Slider.value;
 var source1x= [10,-10]; // [x, y]en metres
 var source2x= [-15,15]; // [x, y]en metres
 
+//The origin is in the top-left corner, and increasing values go down rather than up
+
+
 //  Map scale - pixels per meter
 var PPM = 18; //366 pixels for around 20 m 
 
@@ -265,8 +268,8 @@ function draw() {
     canvas_context.drawImage(mapSprite, 0, 0);
     // Draw markers
 	// added - 
-	canvas_context.drawImage(markerSource1.Sprite, markerSource1.XPos, - markerSource1.YPos, markerSource1.Width, markerSource1.Height);
-	canvas_context.drawImage(markerSource2.Sprite, markerSource2.XPos, - markerSource2.YPos, markerSource2.Width, markerSource2.Height);
+	canvas_context.drawImage(markerSource1.Sprite, markerSource1.XPos, markerSource1.YPos, markerSource1.Width, markerSource1.Height);
+	canvas_context.drawImage(markerSource2.Sprite, markerSource2.XPos, markerSource2.YPos, markerSource2.Width, markerSource2.Height);
 	canvas_context.drawImage(marker.Sprite, marker.XPos, marker.YPos, marker.Width, marker.Height);
     // run example specific draw callback
     if (!(typeof(drawLocal)=='undefined')) { drawLocal();	}
