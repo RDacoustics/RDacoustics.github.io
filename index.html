@@ -145,7 +145,7 @@ function onError(error) {
 window.onload = f;
 
 	
-// define center of playground		 
+// define center of playground by clicking on button 
 var coords = {lat: "", lon: ""};
 var centerPosition= [0, 0];
 function setCenterLocation() {
@@ -157,6 +157,8 @@ function getPosition(position) {
 	coords.lat = position.coords.latitude;
     coords.lon = position.coords.longitude;
 	centerPosition= [coords.lat, coords.lon] ;
+	currentPosYX = calcPosition(currentPosition, centerPosition);
+	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX;
 }	
 	
 	
