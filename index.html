@@ -64,8 +64,8 @@
 		</table>
 
 		
-<p id="test"> </p>		
-		
+//<p id="test"> </p>		
+<textarea id="result" cols="100" rows="10"></textarea>	
 		
 <button onclick="setCenterLocation()">Set Canvas Center coordinates</button>
 <p id="demo"></p>
@@ -83,6 +83,9 @@
  -->
 
 <script>
+
+
+
 //GUI
 var mouseDown = false;
 var orderValue = document.getElementById('order-value');
@@ -111,7 +114,7 @@ gain3.gain.value = gain3Slider.value;
 var k = document.getElementById("test");
 var coords = {lat: "", lon: ""};
 
-/* var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
+var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 1 };
 function f() {
         // Update every 100 ms seconds
         var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccuracy: 0, frequency: 100 };
@@ -130,7 +133,7 @@ function onSuccess(position) {
             'message: ' + error.message + '\n');
     }
 		
-f(); */
+window.onload = f;
 	
 		
 function showLocation(position) {
