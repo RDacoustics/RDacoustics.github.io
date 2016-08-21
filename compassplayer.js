@@ -253,6 +253,6 @@ function calcDistanceReceiverBordSource(recx,recy,sx,sy,rayon) {
 	d1= Math.abs(Math.sqrt(((recx-x1)*(recx-x1))+((recy-y1)*(recy-y1))));
 	d2= Math.abs(Math.sqrt(((recx-x2)*(recx-x2))+((recy-y2)*(recy-y2))));
 	d= Math.min(d1, d2);
-    return [d];
+return [x1,y1,x2,y2,d];
 }
 

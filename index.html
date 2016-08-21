@@ -168,10 +168,10 @@ function onSuccess(position) {
     marker.XPos = Xposcentre+ Math.round(currentPosYX[1])*PPM;
 	marker.YPos = Yposcentre+ Math.round(currentPosYX[0])*PPM;
 // calcul distance current position- bord du coverage source
-	s1d = calcDistanceReceiverBordSource(currentPosYX[1],currentPosYX[0],source1x[0],source1x[1],6);
+	[x1,y1,x2,y2,s1d]= calcDistanceReceiverBordSource(currentPosYX[1],currentPosYX[0],source1x[0],source1x[1],6);
 //affiche les données	
 	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX;
-    ks1.innerHTML= "distance Source 1 border: "+ s1d;	
+    ks1.innerHTML= "bord1:"+x1+"-"+y1+"  bord2:"+x2+"-"+y2+ "distance Source 1 border: "+ s1d;	
 	
 	
 	}	
