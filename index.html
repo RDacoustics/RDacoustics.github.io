@@ -67,7 +67,7 @@
 
 		
 <button onclick="setCenterLocation()">Set Canvas Center coordinates</button>
-
+<input type="button" onclick="stopWatch();" value="Stop WatchGPS"/>
 
 
 <div id="container">
@@ -131,16 +131,18 @@ function setCenterLocation() {
     } 
 
 function getPosition(position) {
-	alert("button works!");
 	coords.lat = position.coords.latitude;
     coords.lon = position.coords.longitude;
 	centerPosition= [coords.lat, coords.lon] ;
 	currentPosYX = calcPosition(currentPosition, centerPosition);
 	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" +currentPosYX;
+	navigator.geolocation.clearWatch(watchID);
 	f();
 }	
 
-
+ function stopWatch(){
+    navigator.geolocation.clearWatch(watchID);
+         }
 
 // current GPS position 
 
