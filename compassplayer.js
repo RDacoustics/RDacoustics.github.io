@@ -206,11 +206,6 @@ function mouseAction(mouse) {
 }
 
 
-// position source1
-
-
-
-
 
 Number.prototype.toRadians = function() {
    return this * Math.PI / 180;
