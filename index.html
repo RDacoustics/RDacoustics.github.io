@@ -270,8 +270,11 @@ function draw() {
 	// Draw circles 
 	   //s1 source
     canvas_context.beginPath();
-    canvas_context.arc(Xposcentre+(source1x[0]*PPM), Yposcentre+(source1x[1]*PPM),source1R*PPM, 0, 2 * Math.PI);
-    canvas_context.stroke();
+    canvas_context.arc(Xposcentre+(source1x[0]*PPM),Yposcentre+(source1x[1]*PPM),source1R*PPM, 0, 2 * Math.PI);
+    context.lineWidth = 5;
+     // set line color
+    context.strokeStyle = '#e0e0d1';
+	canvas_context.stroke();
     
 	// Draw markers
 	canvas_context.drawImage(markerSource1.Sprite, markerSource1.XPos, markerSource1.YPos, markerSource1.Width, markerSource1.Height);
