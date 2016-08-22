@@ -262,3 +262,15 @@ function calcDistanceReceiverBordSource(recx,recy,sx,sy,rayon) {
 return [x,y,d];
 }
 
+function IsRecinSourceCircle(pointxy,circle) {
+//circle: center x,y , radius
+// inside or outside the sourceCirce 
+//circle equation, with rec x.y: greater than, less than, or equal to the r^2 value. 
+//If it is greater, then the point lies outside of the circle
+
+    if ((pointxy[0] - circle[0])^2 + (pointxy[1] - circle[1])^2 <= circle[3]^2 ) {
+        return true;
+    } else {
+        return false;
+    }
+}

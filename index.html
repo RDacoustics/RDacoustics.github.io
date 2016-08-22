@@ -177,9 +177,22 @@ function onSuccess(position) {
 	marker.YPos = Yposcentre+ Math.round(currentPosYX[0])*PPM;
 // SOurce 1 calcul distance current position- bord du coverage source
 	recBordSource1= calcDistanceReceiverBordSource(currentPosYX[1],currentPosYX[0],source1x[0],source1x[1],source1R);
-//affiche les données	
+
+	//affiche les données	
 	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" + currentPosYX;
-    ks1.innerHTML= "Position bord:"+recBordSource1[0]+"/"+recBordSource1[1]+ "distance Source 1 border: "+ recBordSource1[2];		
+	// Receiver in the source coverage circle ? 
+	//circle: center x,y , radius
+	pointxy[0]=currentPosYX[1];
+	pointxy[1]=currentPosYX[0];
+	circle[0]=source1x[0];circle[1]=source1x[1];circle[2]=source1R ;
+    if (IsRecinSourceCircle(pointxy,circle)== true {
+    ks1.innerHTML= "Position bord:"+recBordSource1[0]+"/"+recBordSource1[1]+ "distance Source 1 border: "+ recBordSource1[2]+ "  Receiver in Source 1 circle coverage: ";		
+   
+    } else {
+    ks1.innerHTML= "Position bord:"+recBordSource1[0]+"/"+recBordSource1[1]+ "distance Source 1 border: "+ recBordSource1[2]+ "  Receiver NOT in Source 1 circle coverage: ";		
+   
+    }
+	
 	
 	}	
 
