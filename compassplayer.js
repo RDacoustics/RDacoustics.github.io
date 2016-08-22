@@ -269,6 +269,7 @@ function IsRecinSourceCircle(pointxy,circle) {
 //If it is greater, then the point lies outside of the circle
 
 oo = Math.pow((pointxy[0] - circle[0]),2) + Math.pow((pointxy[1] - circle[1]),2)-Math.pow(circle[3],2) ;
+oo=  Math.pow((pointxy[0] - circle[0]),2);
 return oo 
 
   //  if ((pointxy[0] - (circle[0]*circle[0])) + (pointxy[1] - (circle[1]*circle[1])) <= (circle[3]*circle[3]))  {
