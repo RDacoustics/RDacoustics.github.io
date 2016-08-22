@@ -72,7 +72,8 @@
 <br/>		
 <p id="s1data"> </p>		
 <br/>
-
+<p id="s2data"> </p>		
+<br/>
 
 <div id="container">
     <img class='img' src="Picture1.png" alt="" />
@@ -115,7 +116,7 @@ gain3.gain.value = gain3Slider.value;
 var source1x= [10,-10]; // [x, y]en metres
 var source1R = 6;
 var source2x= [-15,15]; // [x, y]en metres
-
+var source2R = 6;
 //The origin is in the top-left corner, and increasing values go down rather than up
 
 
@@ -128,6 +129,7 @@ var PPM = 18; //366 pixels for around 20 m
 var k = document.getElementById("showdata");
 var kw = document.getElementById("warning");
 var ks1 = document.getElementById("s1data");
+var ks2 = document.getElementById("s2data");
 
 var currentPosition= [0, 0];
 var centerPosition= [0, 0];
@@ -162,7 +164,10 @@ var options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0,desiredAccur
 var recBordSource1= [0,0,0];
 var currentPosYX= [0,0];
 var pointxy=[0,0];
-var circle=[0,0,0];
+var circle1=[source1x[0],source1x[1],source1R ];
+var circle2=[source2x[0],source2x[1],source2R ];
+
+
 var alors= false;
 
 function f() {
@@ -176,27 +181,24 @@ function onSuccess(position) {
      // Move the marker to current location
     marker.XPos = Xposcentre+ Math.round(currentPosYX[1])*PPM;
 	marker.YPos = Yposcentre+ Math.round(currentPosYX[0])*PPM;
-// SOurce 1 calcul distance current position- bord du coverage source
+// Source 1 calcul distance current position- border of coverage circle
 	recBordSource1= calcDistanceReceiverBordSource(currentPosYX[1],currentPosYX[0],source1x[0],source1x[1],source1R);
+// source 2 
+	recBordSource2= calcDistanceReceiverBordSource(currentPosYX[1],currentPosYX[0],source2x[0],source2x[1],source2R);
 
 	//affiche les données	
 	k.innerHTML= "current location:" + currentPosition +"   center location:" + centerPosition +"    current position for canvas:" + currentPosYX;
 	// Receiver in the source coverage circle ? 
 	//circle: center x,y , radius
-	
 	pointxy[0]=currentPosYX[1];
 	pointxy[1]=currentPosYX[0];
-	circle[0]=source1x[0];circle[1]=source1x[1];circle[2]=source1R ;
 	
-	alors = IsRecinSourceCircle(pointxy,circle);
-	ks1.innerHTML= "distance Source 1 border: "+ recBordSource1[2]+"// Receiver in the Source1 coverage circle: "+ alors;		
+	alors1 = IsRecinSourceCircle(pointxy,circle1);
+	ks1.innerHTML= "distance Source 1 border: "+ recBordSource1[2]+"// Receiver in the Source1 coverage circle: "+ alors1;		
 	
-    //if (alors == true) {
-	//	ks1.innerHTML= "Position bord:"+recBordSource1[0]+"/"+recBordSource1[1]+ "distance Source 1 border: "+ recBordSource1[2]+ "  Receiver in Source 1 circle coverage: ";		
-	//	} else {
-	//	ks1.innerHTML= "Position bord:"+recBordSource1[0]+"/"+recBordSource1[1]+ "distance Source 1 border: "+ recBordSource1[2]+ "  Receiver NOT in Source 1 circle coverage: ";		
-    //}
-	
+    alors2 = IsRecinSourceCircle(pointxy,circle2);
+	ks2.innerHTML= "distance Source 1 border: "+ recBordSource1[2]+"// Receiver in the Source1 coverage circle: "+ alors2;		
+
 	}	
 
 	
@@ -307,7 +309,7 @@ function draw() {
 	canvas_context.stroke();
     	   //s2 source
     canvas_context.beginPath();
-    canvas_context.arc(Xposcentre+(source2x[0]*PPM),Yposcentre+(source2x[1]*PPM),source1R*PPM, 0, 2 * Math.PI);
+    canvas_context.arc(Xposcentre+(source2x[0]*PPM),Yposcentre+(source2x[1]*PPM),source2R*PPM, 0, 2 * Math.PI);
     canvas_context.lineWidth = 5;
     canvas_context.strokeStyle = '#e0e0d1';     // set line color
 	canvas_context.stroke();
