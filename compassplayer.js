@@ -267,9 +267,13 @@ function IsRecinSourceCircle(pointxy,circle) {
 // inside or outside the sourceCirce 
 //circle equation, with rec x.y: greater than, less than, or equal to the r^2 value. 
 //If it is greater, then the point lies outside of the circle
-    if ((pointxy[0] - (circle[0]*circle[0])) + (pointxy[1] - (circle[1]*circle[1])) <= (circle[3]*circle[3]))  {
-        return true;
-    } else {
-        return false;
-    }
+
+oo = ((pointxy[0] - (circle[0]*circle[0])) + (pointxy[1] - (circle[1]*circle[1])))-(circle[3]*circle[3]) ;
+return oo 
+
+  //  if ((pointxy[0] - (circle[0]*circle[0])) + (pointxy[1] - (circle[1]*circle[1])) <= (circle[3]*circle[3]))  {
+  //      return true;
+  //  } else {
+   //     return false;
+  //  }
 }
