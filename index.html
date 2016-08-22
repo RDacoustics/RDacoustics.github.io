@@ -291,14 +291,20 @@ function draw() {
     // Draw map
     canvas_context.drawImage(mapSprite, 0, 0);
 	
- // draw line receiver  - border
+ // draw line receiver  - border Source 1
 	canvas_context.beginPath();
 	canvas_context.moveTo(Xposcentre+15+ Math.round(currentPosYX[1])*PPM,Yposcentre+15+ Math.round(currentPosYX[0])*PPM); // current 
     canvas_context.lineTo(Xposcentre+ Math.round(recBordSource1[0])*PPM,Yposcentre+ Math.round(recBordSource1[1])*PPM);
 	canvas_context.lineWidth = 2;
     canvas_context.strokeStyle = '#e0e0d1'; 
     canvas_context.stroke();
-	
+ // draw line receiver  - border Source 2
+	canvas_context.beginPath();
+	canvas_context.moveTo(Xposcentre+15+ Math.round(currentPosYX[1])*PPM,Yposcentre+15+ Math.round(currentPosYX[0])*PPM); // current 
+    canvas_context.lineTo(Xposcentre+ Math.round(recBordSource2[0])*PPM,Yposcentre+ Math.round(recBordSource2[1])*PPM);
+	canvas_context.lineWidth = 2;
+    canvas_context.strokeStyle = '#e0e0d1'; 
+    canvas_context.stroke();	
 	
 	// Draw circles 
 	   //s1 source
